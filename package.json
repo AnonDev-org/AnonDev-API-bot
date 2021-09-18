@@ -1,6 +1,6 @@
 {
 	"name": "AnonDev-API-bot",
-	"version": "1.0.0",
+	"version": "1.0.2",
 	"description": "Example Discord.js v13 bot powered by AnonDev API",
 	"main": "index.js",
 	"scripts": {
@@ -24,5 +24,9 @@
 	},
 	"devDependencies": {
 		"node": "^16.9.1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/AnonDev-org/AnonDev-API-bot"
 	}
 }

@@ -122,3 +122,4 @@ prettier.config.js
 json.sqlite
 .breakpoints
 package-lock.json
+json.sqlite
