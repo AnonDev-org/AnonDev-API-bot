@@ -9,8 +9,16 @@ const Discord = require("discord.js");
 module.exports = class extends Command {
 	constructor(...args) {
 		super(...args, {
-			name: "joke",
-			description: "Get random joke",
+			name: "threats",
+			description: "Generate threats image",
+			args: [
+				{
+					name: "user",
+					type: ArgumentType.USER,
+					description: "User",
+					required: false,
+				},
+			],
 		});
 	}
 	async run({
@@ -25,8 +33,15 @@ module.exports = class extends Command {
 		objectArgs,
 		message,
 	}) {
+		let user = (await objectArgs.user)
+			? client.users.cache.get(objectArgs.user.replace(/[\\<>@#&!]/g, ""))
+			: author;
+
 		const resp = await client
-			.request(`/api/others/joke`, "GET")
+			.request(
+				`/api/images/threats?image=${encodeURIComponent(user.avatarURL())}`,
+				"GET"
+			)
 			.catch((err) => {
 				console.log("Error while fetching API endpoint", err);
 				return respond({
@@ -44,10 +59,10 @@ module.exports = class extends Command {
 				ephemeral: true,
 			});
 		}
-		console.log(data);
+
 		const embed = new Discord.MessageEmbed()
-			.setTitle(`Joke`)
-			.setDescription(data.joke)
+			.setTitle(`Threats`)
+			.setImage(data.url)
 			.setColor("RANDOM")
 			.setFooter(client.user.username, client.user.avatarURL())
 			.setTimestamp();
