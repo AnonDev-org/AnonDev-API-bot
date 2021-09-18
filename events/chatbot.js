@@ -3,7 +3,7 @@ const { Event } = require("gcommands");
 module.exports = class Chatbot extends Event {
 	constructor(client) {
 		super(client, {
-			name: "message",
+			name: "messageCreate",
 			once: false,
 			ws: false,
 		});

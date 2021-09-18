@@ -1,6 +1,6 @@
 {
 	"name": "AnonDev-API-bot",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"description": "Example Discord.js v13 bot powered by AnonDev API",
 	"main": "index.js",
 	"scripts": {
