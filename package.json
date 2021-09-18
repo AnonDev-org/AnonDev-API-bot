@@ -24,5 +24,9 @@
 	},
 	"devDependencies": {
 		"node": "^16.9.1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/AnonDev-org/AnonDev-API-bot"
 	}
 }

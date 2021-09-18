@@ -15,11 +15,7 @@ This project is a Discord bot that is powered by [AnonDev API](https://api.anond
 
 `npm start or node index.js` - Start the project
 
-
-
 [![Run on Repl.it](https://repl.it/badge/github/AnonDev-org/AnonDev-API-bot)](https://repl.it/github/AnonDev-org/AnonDev-API-bot)
-
-
 
 ### Information
 
