@@ -11,6 +11,7 @@ module.exports = class extends Command {
 		super(...args, {
 			name: "ping",
 			description: "Checks the bot's latency",
+			category: "info",
 		});
 	}
 	async run({

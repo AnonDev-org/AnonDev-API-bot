@@ -30,8 +30,11 @@ const client = new GCommandsClient({
 		Intents.FLAGS.GUILD_MEMBERS,
 		Intents.FLAGS.GUILD_INTEGRATIONS,
 		Intents.FLAGS.GUILD_MESSAGES,
+		Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
+		Intents.FLAGS.GUILD_PRESENCES,
 	],
-	partials: ["CHANNEL", "MESSAGE"],
+	partials: ["CHANNEL", "MESSAGE", "GUILD_MEMBER"],
+	autoTyping: config.autoTyping || false,
 });
 client.config = config;
 client.request = request;
@@ -70,8 +73,19 @@ client.on("ready", async () => {
 });
 
 client.on("log", console.log);
+client.on("error", console.error);
+
 if (config.debug) {
 	client.on("debug", console.log);
+	client.on("rateLimit", console.log);
+	client.on("warn", console.warn);
 }
 
 client.login(config.token);
+
+process.on("uncaughtException", (err) => {
+	console.error("There was an uncaught error", err);
+	if (config.exitOnCrash) {
+		process.exit(1);
+	}
+});

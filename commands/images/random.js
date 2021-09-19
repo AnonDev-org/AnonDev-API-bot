@@ -10,6 +10,7 @@ module.exports = class extends Command {
 	constructor(...args) {
 		super(...args, {
 			name: "random",
+			category: "images",
 			description: "Get image of that does not exist (generated using GAN)",
 			args: [
 				{

@@ -5,12 +5,13 @@ const {
 	ArgumentType,
 } = require("gcommands");
 const Discord = require("discord.js");
-
+const moment = require("moment");
 module.exports = class extends Command {
 	constructor(...args) {
 		super(...args, {
 			name: "me",
 			description: "Get info about your API key",
+			category: "owner",
 		});
 	}
 	async run({
@@ -25,9 +26,10 @@ module.exports = class extends Command {
 		objectArgs,
 		message,
 	}) {
-		if (!client.config.owner) return respond(":x: No bot owner is set");
+		if (!client.config.owner)
+			return respond({ content: ":x: No bot owner is set", ephemeral: true });
 		if (author.id !== client.config.owner)
-			return respond(":x: You can't use this");
+			return respond({ content: ":x: You can't use this", ephemeral: true });
 
 		const resp = await client.request(`/api/others/me`, "GET").catch((err) => {
 			console.log("Error while fetching API endpoint", err);
@@ -47,6 +49,9 @@ module.exports = class extends Command {
 			});
 		}
 
+		let created_at = `<t:${moment(data.created_at).format("X")}:f>`;
+		let regenerated_at = `<t:${moment(data.regenerated_at).format("X")}:f>`;
+
 		const embed = new Discord.MessageEmbed()
 			.setTitle(`Info about your API key`)
 			.addField("User", `${data.user_tag} (${data.user_id})`)
@@ -54,8 +59,20 @@ module.exports = class extends Command {
 			.addField("Rate limit", `${data.rate_limit}`, true)
 			.addField("Rate limit Remaining", `${data.rate_limit_remaining}`, true)
 			.addField("Calls", `${data.calls}`, true)
-			.addField("Created at", `${data.created_at}`, true)
-			.addField("Regenerated at", `${data.regenerated_at}`, true)
+			.addField(
+				"Created at",
+				`${created_at !== "Invalid date" ? `${created_at}` : "?"}`,
+				true
+			)
+			.addField(
+				"Regenerated at",
+				`${
+					regenerated_at !== "Invalid date"
+						? `${regenerated_at}`
+						: "not regenerated"
+				}`,
+				true
+			)
 			.setColor("#3f6fa1")
 			.setFooter(client.user.username, client.user.avatarURL())
 			.setTimestamp();

@@ -11,6 +11,7 @@ module.exports = class extends Command {
 		super(...args, {
 			name: "meme",
 			description: "Get random meme",
+			category: "images",
 			args: [
 				{
 					name: "subreddit",

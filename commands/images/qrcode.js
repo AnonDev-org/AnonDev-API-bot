@@ -11,6 +11,7 @@ module.exports = class extends Command {
 		super(...args, {
 			name: "qrcode",
 			description: "Generate QR code",
+			category: "images",
 			args: [
 				{
 					name: "data",

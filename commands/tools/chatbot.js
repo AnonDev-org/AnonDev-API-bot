@@ -11,6 +11,8 @@ module.exports = class extends Command {
 		super(...args, {
 			name: "chatbot",
 			description: "Chat with a bot",
+			category: "tools",
+
 			args: [
 				{
 					name: "text",

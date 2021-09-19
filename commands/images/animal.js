@@ -16,6 +16,7 @@ module.exports = class extends Command {
 					name: "animal",
 					type: ArgumentType.STRING,
 					description: "Animal to get image of",
+					category: "images",
 					required: true,
 					choices: [
 						{ name: "Cat", value: "cat" },

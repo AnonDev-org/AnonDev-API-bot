@@ -11,6 +11,7 @@ module.exports = class extends Command {
 		super(...args, {
 			name: "help",
 			description: "Check bot's commands",
+			category: "info",
 		});
 	}
 	async run({
@@ -35,13 +36,18 @@ module.exports = class extends Command {
 			.setTimestamp()
 			.setThumbnail(client.user.avatarURL());
 
-		client.gcommands.forEach((cmd) => {
-			embed.addField(
-				`**${client.config.prefix}${cmd.name} ${
+		client.config.categories.forEach(async (category) => {
+			let cmds = client.gcommands.filter((c) => c.category == category);
+			let text = "";
+			if (category == "owner" && author.id !== client.config.owner) return;
+			await cmds.forEach((cmd) => {
+				text += `**${client.config.prefix}${cmd.name} ${
 					cmd.aliases && cmd.aliases.length > 1 ? `(${cmd.aliases})` : ""
-				}**`,
-				`${cmd.description}`,
-				true
+				}** - ${cmd.description}\n`;
+			});
+			embed.addField(
+				`__**${client.helpers.capitalize(category)}**__`,
+				`${text}`
 			);
 		});
 

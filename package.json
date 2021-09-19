@@ -1,6 +1,6 @@
 {
 	"name": "AnonDev-API-bot",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"description": "Example Discord.js v13 bot powered by AnonDev API",
 	"main": "index.js",
 	"scripts": {
@@ -18,6 +18,8 @@
 		"express": "^4.17.1",
 		"form-data": "^4.0.0",
 		"gcommands": "^7.0.2",
+		"moment": "^2.29.1",
+		"moment-duration-format": "^2.3.2",
 		"node-fetch": "^2.6.2",
 		"quick.db": "^7.1.3",
 		"quick.replit": "^1.0.3"
