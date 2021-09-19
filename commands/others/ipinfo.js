@@ -11,6 +11,7 @@ module.exports = class extends Command {
 		super(...args, {
 			name: "ipinfo",
 			description: "Get info about specific IP address",
+			category: "others",
 			args: [
 				{
 					name: "ip",
@@ -52,20 +53,22 @@ module.exports = class extends Command {
 				ephemeral: true,
 			});
 		}
-		const embed = new Discord.MessageEmbed()
-			.setTitle(`IP info`)
-			.addField("IP", data.ip, true)
-			.addField("Hostname", data.hostname, true)
-			.addField(
+		const embed = new Discord.MessageEmbed().setTitle(`IP info`);
+		if (data.ip) embed.addField("IP", data.ip, true);
+		if (data.hostname) embed.addField("Hostname", data.hostname, true);
+		if (data.city)
+			embed.addField(
 				"Location",
-				`${data.city}, ${data.region} (${data.country})`,
+				`${data.city || "?"}, ${data.region || "?"} (${data.country || "?"})`,
 				true
-			)
-			.addField("Timezone", `${data.timezone}`, true)
-			.addField("Organization", `${data.org}`, true)
-			.setColor("RANDOM")
-			.setFooter(client.user.username, client.user.avatarURL())
-			.setTimestamp();
+			);
+		if (data.timezone) embed.addField("Timezone", `${data.timezone}`, true);
+		if (data.org)
+			embed
+				.addField("Organization", `${data.org}`, true)
+				.setColor("RANDOM")
+				.setFooter(client.user.username, client.user.avatarURL())
+				.setTimestamp();
 
 		respond({
 			embeds: [embed],

@@ -11,6 +11,7 @@ module.exports = class extends Command {
 		super(...args, {
 			name: "token",
 			description: "Get fake Discord bot token",
+			category: "others",
 		});
 	}
 	async run({

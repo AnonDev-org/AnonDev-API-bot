@@ -11,6 +11,7 @@ module.exports = class extends Command {
 		super(...args, {
 			name: "joke",
 			description: "Get random joke",
+			category: "others",
 		});
 	}
 	async run({

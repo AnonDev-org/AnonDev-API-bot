@@ -11,6 +11,7 @@ module.exports = class extends Command {
 		super(...args, {
 			name: "lolice",
 			description: "Generate lolice chef image",
+			category: "images",
 			args: [
 				{
 					name: "user",

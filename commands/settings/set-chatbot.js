@@ -12,6 +12,7 @@ module.exports = class extends Command {
 			name: "set-chatbot",
 			description: "Setup chatbot channel",
 			userRequiredPermissions: "ADMINISTRATOR",
+			category: "settings",
 			args: [
 				{
 					name: "channel",

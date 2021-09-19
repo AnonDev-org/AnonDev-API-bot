@@ -11,6 +11,7 @@ module.exports = class extends Command {
 		super(...args, {
 			name: "invite",
 			description: "Get bot's invite link",
+			category: "info",
 		});
 	}
 	async run({

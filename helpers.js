@@ -1,6 +1,7 @@
 const fetch = require("node-fetch");
 const config = require("./config.js");
 const formdata = require("form-data");
+const moment = require("moment");
 
 /**
  * Send a request to the specified AnonDev API endpoint
@@ -39,15 +40,29 @@ async function request(
 		headers: {
 			Authorization: `${apiKey}`,
 			Accept: "application/json",
-			"User-Agent": `AnonDev API Bot/v${require("./package.json").version}`,
+			"User-Agent": `AnonDev_API_Bot_Request@v${
+				require("./package.json").version
+			}`,
 		},
 	});
 }
 function capitalize(string) {
 	return string.charAt(0).toUpperCase() + string.slice(1);
 }
+function formatDate(date, divide) {
+	if (divide) {
+		let formatted = `<t:${moment(date / 1000).format("x")}:f>`;
+		if (formatted.includes("Invalid date")) return "Invalid date";
+		return formatted;
+	} else {
+		let formatted = `<t:${moment(date).format("x")}:f>`;
+		if (formatted.includes("Invalid date")) return "Invalid date";
+		return formatted;
+	}
+}
 
 module.exports = {
 	request,
 	capitalize,
+	formatDate,
 };

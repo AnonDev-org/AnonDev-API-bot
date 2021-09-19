@@ -11,6 +11,7 @@ module.exports = class extends Command {
 		super(...args, {
 			name: "clyde",
 			description: "Generate Clyde Discord bot image",
+			category: "images",
 			args: [
 				{
 					name: "text",
