@@ -4,6 +4,6 @@ module.exports = {
 	prefix: "!",
 	autoTyping: true,
 	categories: ["info", "images", "other", "tools", "settings", "owner"],
-	debug: true,
+	debug: false,
 	exitOnCrash: false,
 };
