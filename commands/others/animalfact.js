@@ -20,15 +20,15 @@ module.exports = class extends Command {
 					category: "others",
 					required: true,
 					choices: [
-						{ name: "Cat Fact", value: "cat" },
-						{ name: "Dog Fact", value: "dog" },
-						{ name: "Fox Fact", value: "fox" },
-						{ name: "Panda Fact", value: "panda" },
-						{ name: "Red Panda Fact", value: "red_panda" },
-						{ name: "Bird Fact", value: "bird" },
-						{ name: "Koala Fact", value: "koala" },
-						{ name: "Raccoon Fact", value: "raccoon" },
-						{ name: "Kangaroo Fact", value: "kangaroo" },
+						{ name: "Cat", value: "cat" },
+						{ name: "Dog", value: "dog" },
+						{ name: "Fox", value: "fox" },
+						{ name: "Panda", value: "panda" },
+						{ name: "Red Panda", value: "red_panda" },
+						{ name: "Bird", value: "bird" },
+						{ name: "Koala", value: "koala" },
+						{ name: "Raccoon", value: "raccoon" },
+						{ name: "Kangaroo", value: "kangaroo" },
 					],
 				},
 			],
@@ -67,7 +67,7 @@ module.exports = class extends Command {
 		}
 
 		const embed = new Discord.MessageEmbed()
-			.setTitle(`${client.helpers.capitalize(objectArgs.animal)}`)
+			.setTitle(`${client.helpers.capitalize(objectArgs.animal)} Fact`)
 			.setDescription(data.fact)
 			.setColor("RANDOM")
 			.setFooter(client.user.username, client.user.avatarURL())
