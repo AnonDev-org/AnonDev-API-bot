@@ -17,7 +17,7 @@ async function request(
 	bodyJSON = {},
 	bodyType = "formdata"
 ) {
-	const apiURL = config.apiURL ? config.apiURL : "https://api.anondev.ml";
+	const apiURL = "https://api.anondev.ml"
 	const apiKey = config.apiKey;
 
 	if (bodyType == "formdata") {
