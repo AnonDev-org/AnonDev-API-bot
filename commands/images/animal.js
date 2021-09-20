@@ -11,6 +11,7 @@ module.exports = class extends Command {
 		super(...args, {
 			name: "animal",
 			description: "Get random animal",
+			category: "images",
 			args: [
 				{
 					name: "animal",
