@@ -9,14 +9,15 @@ const Discord = require("discord.js");
 module.exports = class extends Command {
 	constructor(...args) {
 		super(...args, {
-			name: "animal",
-			description: "Get random animal",
+			name: "animalfact",
+			description: "Get random animal fact",
+			category: "others",
 			args: [
 				{
 					name: "animal",
 					type: ArgumentType.STRING,
-					description: "Animal to get image of",
-					category: "images",
+					description: "Animal to get fact of",
+					category: "others",
 					required: true,
 					choices: [
 						{ name: "Cat", value: "cat" },
