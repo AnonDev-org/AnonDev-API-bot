@@ -29,7 +29,6 @@ module.exports = class extends Command {
 						{ name: "Koala", value: "koala" },
 						{ name: "Raccoon", value: "raccoon" },
 						{ name: "Kangaroo", value: "kangaroo" },
-						{ name: "Shiba", value: "shiba" },
 					],
 				},
 			],
