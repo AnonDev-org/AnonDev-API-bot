@@ -7,11 +7,10 @@ name: Mark stale issues and pull requests
 
 on:
   schedule:
-  - cron: '16 5 * * *'
+    - cron: "16 5 * * *"
 
 jobs:
   stale:
-
     runs-on: ubuntu-latest
     permissions:
       issues: write

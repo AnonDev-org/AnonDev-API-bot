@@ -9,15 +9,15 @@ const Discord = require("discord.js");
 module.exports = class extends Command {
 	constructor(...args) {
 		super(...args, {
-			name: "animal",
-			description: "Get random animal",
-			category: "images",
+			name: "animalfact",
+			description: "Get random animal fact",
+			category: "others",
 			args: [
 				{
 					name: "animal",
 					type: ArgumentType.STRING,
-					description: "Animal to get image of",
-					category: "images",
+					description: "Animal to get fact of",
+					category: "others",
 					required: true,
 					choices: [
 						{ name: "Cat", value: "cat" },
@@ -29,8 +29,6 @@ module.exports = class extends Command {
 						{ name: "Koala", value: "koala" },
 						{ name: "Raccoon", value: "raccoon" },
 						{ name: "Kangaroo", value: "kangaroo" },
-						{ name: "Shiba", value: "shiba" },
-						{ name: "Lizard", value: "lizard" },
 					],
 				},
 			],
@@ -49,7 +47,7 @@ module.exports = class extends Command {
 		message,
 	}) {
 		const resp = await client
-			.request(`/api/images/${objectArgs.animal}`, "GET")
+			.request(`/api/others/fact/${objectArgs.animal}`, "GET")
 			.catch((err) => {
 				console.log("Error while fetching API endpoint", err);
 				return respond({
@@ -69,8 +67,8 @@ module.exports = class extends Command {
 		}
 
 		const embed = new Discord.MessageEmbed()
-			.setTitle(`${client.helpers.capitalize(objectArgs.animal)}`)
-			.setImage(data.url)
+			.setTitle(`${client.helpers.capitalize(objectArgs.animal)} Fact`)
+			.setDescription(data.fact)
 			.setColor("RANDOM")
 			.setFooter(client.user.username, client.user.avatarURL())
 			.setTimestamp();
