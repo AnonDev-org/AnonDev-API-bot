@@ -10,7 +10,7 @@ module.exports = class extends Command {
 	constructor(...args) {
 		super(...args, {
 			name: "ipinfo",
-			description: "Get info about specific IP address",
+			description: "Get info about a specific IP address",
 			category: "others",
 			args: [
 				{
@@ -47,7 +47,7 @@ module.exports = class extends Command {
 		if (!resp.ok) {
 			console.log(`API returned error ${resp.status} ${resp.statusText}`, data);
 			return respond({
-				content: `:x: API returned error \`${resp.status} ${
+				content: `:x: API returned this error \`${resp.status} ${
 					resp.statusText
 				}\`\n\n> \`${JSON.stringify(data)}\``,
 				ephemeral: true,
@@ -65,7 +65,7 @@ module.exports = class extends Command {
 		if (data.timezone) embed.addField("Timezone", `${data.timezone}`, true);
 		if (data.org)
 			embed
-				.addField("Organization", `${data.org}`, true)
+				.addField("ISP", `${data.org}`, true)
 				.setColor("RANDOM")
 				.setFooter(client.user.username, client.user.avatarURL())
 				.setTimestamp();
