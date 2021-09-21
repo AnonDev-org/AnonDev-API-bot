@@ -45,6 +45,7 @@ module.exports = class extends Command {
 					cmd.aliases && cmd.aliases.length > 1 ? `(${cmd.aliases})` : ""
 				}** - ${cmd.description}\n`;
 			});
+			if (!text && text == "") return;
 			embed.addField(
 				`__**${client.helpers.capitalize(category)}**__`,
 				`${text}`
