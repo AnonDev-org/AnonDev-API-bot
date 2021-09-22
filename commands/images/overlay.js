@@ -86,7 +86,7 @@ module.exports = class extends Command {
 		const embed = new Discord.MessageEmbed()
 			.setTitle(
 				`${user.username}'s ${client.helpers.capitalize(
-					objectArgs.type
+					objectArgs.type 
 				)} avatar`
 			)
 			.setImage(data.url)
