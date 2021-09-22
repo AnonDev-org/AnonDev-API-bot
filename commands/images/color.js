@@ -9,15 +9,15 @@ const Discord = require("discord.js");
 module.exports = class extends Command {
 	constructor(...args) {
 		super(...args, {
-			name: "baguette",
-			description: "Generate baguette image",
+			name: "color",
+			description: "Create overlay for the image",
 			category: "images",
 			args: [
 				{
-					name: "user",
-					type: ArgumentType.USER,
-					description: "User",
-					required: false,
+					name: "color",
+					type: ArgumentType.STRING,
+					description: "Color you want to get preview of",
+					required: true,
 				},
 			],
 		});
@@ -34,14 +34,10 @@ module.exports = class extends Command {
 		objectArgs,
 		message,
 	}) {
-		let user = (await objectArgs.user)
-			? client.users.cache.get(objectArgs.user.replace(/[\\<>@#&!]/g, ""))
-			: author;
 		await respond({ content: ":gear: Generating image ..." });
-
 		const resp = await client
 			.request(
-				`/api/images/baguette?image=${encodeURIComponent(user.avatarURL())}`,
+				`/api/images/color/?color=${encodeURIComponent(objectArgs.color)}`,
 				"GET"
 			)
 			.catch((err) => {
@@ -63,9 +59,9 @@ module.exports = class extends Command {
 		}
 
 		const embed = new Discord.MessageEmbed()
-			.setTitle(`Baguette`)
+			.setTitle(`${data.color} preview`)
 			.setImage(data.url)
-			.setColor("RANDOM")
+			.setColor(`${data.color}`)
 			.setFooter(client.user.username, client.user.avatarURL())
 			.setTimestamp();
 

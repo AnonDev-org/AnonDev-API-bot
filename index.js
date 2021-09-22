@@ -89,3 +89,7 @@ process.on("uncaughtException", (err) => {
 		process.exit(1);
 	}
 });
+
+require("./auto-meme.js")(client);
+
+module.exports.client = client;
