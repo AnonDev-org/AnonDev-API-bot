@@ -9,10 +9,30 @@ const Discord = require("discord.js");
 module.exports = class extends Command {
 	constructor(...args) {
 		super(...args, {
-			name: "baguette",
-			description: "Generate baguette image",
+			name: "overlay",
+			description: "Create overlay for the image",
 			category: "images",
 			args: [
+				{
+					name: "type",
+					type: ArgumentType.STRING,
+					description: "Type of overlay you want to get",
+					required: true,
+					choices: [
+						{ name: "Gay", value: "gay" },
+						{ name: "Glass", value: "glass" },
+						{ name: "Wasted", value: "wasted" },
+						{ name: "Passed", value: "passed" },
+						{ name: "Jail", value: "jail" },
+						{ name: "Comrade", value: "comrade" },
+						{ name: "Triggered", value: "triggered" },
+						{ name: "Blur", value: "blur" },
+						{ name: "Pixelate", value: "pixelate" },
+						{ name: "Horny", value: "horny" },
+						{ name: "Blurple", value: "blurple" },
+						{ name: "Blurple2", value: "blurple2" },
+					],
+				},
 				{
 					name: "user",
 					type: ArgumentType.USER,
@@ -38,10 +58,11 @@ module.exports = class extends Command {
 			? client.users.cache.get(objectArgs.user.replace(/[\\<>@#&!]/g, ""))
 			: author;
 		await respond({ content: ":gear: Generating image ..." });
-
 		const resp = await client
 			.request(
-				`/api/images/baguette?image=${encodeURIComponent(user.avatarURL())}`,
+				`/api/images/overlay/${objectArgs.type}?image=${encodeURIComponent(
+					user.avatarURL()
+				)}`,
 				"GET"
 			)
 			.catch((err) => {
@@ -63,7 +84,11 @@ module.exports = class extends Command {
 		}
 
 		const embed = new Discord.MessageEmbed()
-			.setTitle(`Baguette`)
+			.setTitle(
+				`${user.username}'s ${client.helpers.capitalize(
+					objectArgs.type
+				)} avatar`
+			)
 			.setImage(data.url)
 			.setColor("RANDOM")
 			.setFooter(client.user.username, client.user.avatarURL())

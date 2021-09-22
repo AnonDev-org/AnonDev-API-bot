@@ -37,7 +37,7 @@ module.exports = class extends Command {
 		let user = (await objectArgs.user)
 			? client.users.cache.get(objectArgs.user.replace(/[\\<>@#&!]/g, ""))
 			: author;
-
+		await respond({ content: ":gear: Generating image ..." });
 		const resp = await client
 			.request(
 				`/api/images/lolice?image=${encodeURIComponent(user.avatarURL())}`,
@@ -67,8 +67,8 @@ module.exports = class extends Command {
 			.setColor("RANDOM")
 			.setFooter(client.user.username, client.user.avatarURL())
 			.setTimestamp();
-
-		respond({
+		edit({
+			content: null,
 			embeds: [embed],
 			ephemeral: false,
 		});

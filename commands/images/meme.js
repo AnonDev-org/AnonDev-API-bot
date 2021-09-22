@@ -34,6 +34,7 @@ module.exports = class extends Command {
 		objectArgs,
 		message,
 	}) {
+		await respond({ content: ":gear: Generating image ..." });
 		const resp = await client
 			.request(
 				`/api/images/meme${
@@ -67,7 +68,8 @@ module.exports = class extends Command {
 			.setFooter(client.user.username, client.user.avatarURL())
 			.setTimestamp();
 
-		respond({
+		edit({
+			content: null,
 			embeds: [embed],
 			ephemeral: false,
 		});

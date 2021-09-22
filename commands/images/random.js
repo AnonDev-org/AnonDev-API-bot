@@ -52,6 +52,7 @@ module.exports = class extends Command {
 						ephemeral: true,
 					});
 				});
+			await respond({ content: ":gear: Generating image ..." });
 			let data = await resp.json();
 			if (!resp.ok) {
 				console.log(
@@ -109,7 +110,8 @@ module.exports = class extends Command {
 				.setFooter(client.user.username, client.user.avatarURL())
 				.setTimestamp();
 
-			respond({
+			edit({
+				content: null,
 				embeds: [embed],
 				ephemeral: false,
 			});

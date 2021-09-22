@@ -34,6 +34,8 @@ module.exports = class extends Command {
 		objectArgs,
 		message,
 	}) {
+		await respond({ content: ":gear: Generating image ..." });
+
 		const resp = await client
 			.request(
 				`/api/images/clyde?text=${encodeURIComponent(objectArgs.text)}`,
@@ -64,7 +66,8 @@ module.exports = class extends Command {
 			.setFooter(client.user.username, client.user.avatarURL())
 			.setTimestamp();
 
-		respond({
+		edit({
+			content: null,
 			embeds: [embed],
 			ephemeral: false,
 		});
