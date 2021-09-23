@@ -36,6 +36,7 @@ module.exports = class extends Command {
 		objectArgs,
 		message,
 	}) {
+		if (!message.author.permissions.has("MANAGE_GUILD") return message.reply(":x: Missing perms")
 		if (!objectArgs.channel) {
 			await client.db.delete(`automeme_${guild.id}`);
 			return respond(`Successfully removed auto meme channel from database.`);
