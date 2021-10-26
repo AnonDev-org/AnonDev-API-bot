@@ -9,7 +9,7 @@
 		"node-clean": "rm -rf node_modules && rm package-lock.json && npm cache clear --force && npm cache clean --force && npm i",
 		"node-update-then-clean": "npm run node-update && npm run node-clean"
 	},
-	"keywords": [],
+	"keywords": ["discord-bot", "nodejs-discord-bot", "discord.js-bot"],
 	"author": "AnonDev (anon.is-a.dev)",
 	"license": "MIT",
 	"dependencies": {
