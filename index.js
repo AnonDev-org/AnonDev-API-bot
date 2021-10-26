@@ -16,7 +16,6 @@ if (process.env.REPLIT_DB_URL) {
   db = require("quick.db");
 }
 
-
 const client = new GCommandsClient({
   cmdDir: join(__dirname, "commands"),
   eventDir: join(__dirname, "events"),
