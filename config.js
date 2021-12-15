@@ -9,3 +9,4 @@ module.exports = {
 	exitOnCrash: false,
 	automemeInterval: 900000, // 15 mins (in miliseconds)
 };
+ 
