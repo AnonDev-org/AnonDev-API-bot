@@ -21,7 +21,7 @@ This project is a Discord bot that is powered by [AnonDev API](https://api.anond
 
 Developed by [AnonDev](https://anon.is-a.dev)
 
-If you need help you can open new modmail support thread on [Pinglik Support Server](https://go.anondev.ml/pinglik-support) and we will help you 😉
+If you need help you can open new modmail support thread on [Pinglik Support Server](https://pinglik.eu/support) and we will help you 😉.
 
 AnonDev API docs: [here](https://docs.api.anondev.ml)
 
